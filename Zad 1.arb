@@ -1,0 +1,39 @@
+class Stack
+    def initialize
+      @stack = []
+    end
+  
+    def push(e)
+      @stack.push(e)
+    end
+  
+    def pop
+      @stack.pop
+    end
+  
+    def empty?
+      @stack.empty?
+    end
+  
+    def reverse
+      reversed_stack = Stack.new
+      until empty?
+        reversed_stack.push(pop)
+      end
+      @stack = reversed_stack.instance_variable_get(:@stack)
+    end
+  
+    def to_a
+      @stack
+    end
+  end
+  
+  # Przykład użycia
+  stack = Stack.new
+  stack.push(1)
+  stack.push(2)
+  stack.push(3)
+  
+  puts "Stos przed odwróceniem: #{stack.to_a}"
+  stack.reverse
+  puts "Stos po odwróceniu: #{stack.to_a}"
